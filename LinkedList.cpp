@@ -1,27 +1,31 @@
 /* Class: LinkedList
- * Description: Very basic singly linked List class with single head 
+ * Description: Very basic singly linked List class with single head
  * class for use with Data object. It is meant to be inherited for
  * more complex linked lists.
  */
 
+
+#include <string>
+#include <iostream>
 #include "LinkedList.h"
 using namespace std;
 
-LinkedList::LinkedList() {
-    head = nullptr; // empty list
+// default constructor
+LinkedList :: LinkedList() {
+    head = nullptr;
 }
 
 // copy constructor
-LinkedList::LinkedList(const LinkedList& list) {
-    // if list is not empty, perform deep copy
+LinkedList :: LinkedList(const LinkedList& list) {
     if(list.head) {
+        // if list is not empty, perform deep copy
         Node *curr, *listcurr;
         // copy head node data
-        head = curr = new Node(list.head->item);
+        head = curr = new Node(list.head->data);
         listcurr = list.head->next;
         // loop over rest of nodes, copying data
         while (listcurr != nullptr) {
-            curr = curr->next = new Node(listcurr->item);
+            curr = curr->next = new Node(listcurr->data);
             listcurr = listcurr->next;
         }
     } else {
@@ -36,11 +40,11 @@ const LinkedList& LinkedList::operator=(LinkedList rhs) {
     return *this;
 }
 
-void LinkedList::print(ostream &os) {
+void LinkedList::print(ostream &os, const Data& pr) {
     // start at the head of the list
     Node *curr = head;
     while (curr != nullptr) {
-        os << curr->item << endl; // use overloaded output operator to print
+        os << curr->data << endl; // use overloaded output operator to print
         curr = curr->next; // go to next node in list
     }
 }
@@ -55,6 +59,7 @@ void LinkedList::pop_head() {
         delete curr;
     }
 }
+
 LinkedList::~LinkedList() {
     // keep popping until empty list
     while (head != nullptr) {

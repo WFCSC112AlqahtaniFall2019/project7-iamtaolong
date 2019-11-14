@@ -3,4 +3,4 @@ project(project7)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(project7 main.cpp)
+add_executable(project7 main.cpp Stack.cpp Queue.cpp SortedLinkedList.cpp Data.cpp LinkedList.cpp)
