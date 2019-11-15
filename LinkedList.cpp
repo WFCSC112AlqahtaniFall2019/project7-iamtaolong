@@ -40,15 +40,17 @@ const LinkedList& LinkedList::operator=(LinkedList rhs) {
     return *this;
 }
 
-void LinkedList::print(ostream &os, const Data& pr) {
+void LinkedList :: print(ostream &os) {
+//void LinkedList::print(ostream &os, const Data& pr) {
     // start at the head of the list
     Node *curr = head;
     while (curr != nullptr) {
-        os << curr->data << endl; // use overloaded output operator to print
-        curr = curr->next; // go to next node in list
+        os << curr -> data << endl; // use overloaded output operator to print
+        curr = curr -> next; // go to next node in list
     }
 }
-void LinkedList::pop_head() {
+
+void LinkedList :: pop_head() {
     // if not an empty list
     if (head != nullptr) {
         // save location of where head points
@@ -60,7 +62,7 @@ void LinkedList::pop_head() {
     }
 }
 
-LinkedList::~LinkedList() {
+LinkedList :: ~LinkedList() {
     // keep popping until empty list
     while (head != nullptr) {
         pop_head();

@@ -13,10 +13,10 @@ Queue::Queue() {
 
 // a member public function named “enqueue_tail” takes in a Data object, creates a Node pointer,
 // and inserts it into the Queue at the tail of the list.
-void Queue::enqueue_tail(Data stat){
+void Queue::enqueue_tail(Data& FBuser){
 
     // use new
-    Node * node = new Node(stat);
+    Node * node = new Node(FBuser);
 
     // if the list is empty
     if (head == nullptr){
@@ -41,13 +41,14 @@ bool Queue::dequeue_head() {
 
     // if empty list
     if(head!= nullptr){
-        head = head->next;
+        head = head -> next;
         // avoid dangling pointer
-        deletion -> next= nullptr;
+        deletion -> next = nullptr;
         // delete
         delete deletion;
         return true;
     }
+
     else{
         return false;
     }

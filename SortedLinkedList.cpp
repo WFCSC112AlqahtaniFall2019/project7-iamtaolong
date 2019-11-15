@@ -5,61 +5,61 @@
 #include <iostream>
 #include <fstream>
 #include "SortedLinkedList.h"
-#include "LinkedList.h"
+
 #include <string>
 using namespace std;
 
 // default constructor
-SortedLinkedList :: SortedLinkedList(){}
 
-//●	includes a member public function named “insertSorted” takes in a Data object, creates a Node pointer,
+
+// includes a member public function named “insertSorted” takes in a Data object, creates a Node pointer,
 // and inserts it into the Sorted Linked List at the appropriate place in the list as determined by the
 // comparison operators you will overload in the Data class. You are encouraged to reuse your code from InsertionSort project.
-void SortedLinkedList:: insertSorted(Data& FBUser) {
+void SortedLinkedList:: insertSorted(Data FBuser) {
 
-    // make new node
-    Node *newUser = new Node(FBUser);
+    // create a new node object
+    Node* insert = new Node(FBuser);
 
-    // empty list
+    // case1: empty list
     if (head == nullptr) {
-        // then append it in head
-        head = newUser;
+        // insert on the head
+        head = insert;
     }
 
-    // if it is not empty, comments are so boring...
+    // case2: non emptyy
     else {
 
-        // get head
-        Node *now = head;
-        int count = 0;
+        // current node
+        Node *current = head;
+
+        // previous node
         Node *previous = nullptr;
-        bool sorted;
 
-        // if the likesCount is bigger, using the comaprison operator
-        if (now->data > newUser->data) {
+        // if it is smaller
+        if (current -> data > insert -> data) {
 
-            // make an insertion now
-            newUser->next = head;
-            head = newUser;
+            // append in the head
+            insert -> next = head;
+            // relink
+            head = insert;
+
             return;
         }
-        previous = now;
 
-        // continuing getting next node
-        now = now->next;
+        // get next
+        previous = current;
+        current = current->next;
 
-        // iterations
-        while (now) {
-            if (newUser->data > now->data) {
-                previous = now;
-                now = now->next;
-            }
+        // find loop
+        while (current && insert -> data > current -> data) {
+
+            // getting the next
+            previous = current;
+            current = current->next;
         }
 
-        // we could make the interstion now
-        Node *temp = now;
-        newUser->next = now;
-        previous->next = newUser;
-
+        // getting next
+        insert -> next = current;
+        previous -> next = insert;
     }
 }

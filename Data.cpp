@@ -14,7 +14,7 @@ using namespace std;
 // This dataset contains 99903 entries with 15 columns.
 
 //default constructor
-Data::Data() {
+Data :: Data() {
 
     // gender is a string
     gender = "";
@@ -28,9 +28,8 @@ Data::Data() {
 }
 
 
-
 // alternative constructor
-Data::Data (string Agender, int Aage, int AfriendsCount, int AlikesReceivedCount) {
+Data :: Data (string Agender, int Aage, int AfriendsCount, int AlikesReceivedCount) {
 
     // gender is a string
     gender = Agender;
@@ -43,32 +42,36 @@ Data::Data (string Agender, int Aage, int AfriendsCount, int AlikesReceivedCount
 
 }
 
-
-
 // > overloader
 // overloads the comparison operators (< or >).
 // You will choose at least one attribute from your data set to be the comparison attribute.
 bool Data:: operator > (const Data &FBUser) {
+
+    // return bigger
     return likesReceivedCount > FBUser.likesReceivedCount;
 }
-
-
 
 
 // > overloader
 // overloads the comparison operators (< or >).
 // You will choose at least one attribute from your data set to be the comparison attribute.
-bool Data:: operator < (const Data &FBUser) { // < overloader
+bool Data :: operator < (const Data &FBUser) {
+
+    // return smaller
     if (this->likesReceivedCount > FBUser.likesReceivedCount) {
         return false;
-    } else if (this->likesReceivedCount < FBUser.likesReceivedCount) {
+    }
+
+    // return smaller
+    else if (this->likesReceivedCount < FBUser.likesReceivedCount) {
         return true;
-    } else {
+    }
+
+    // same return smaller
+    else {
         return false;
     }
 }
-
-
 
 
 // Overloads the output stream operator
@@ -76,9 +79,10 @@ bool Data:: operator < (const Data &FBUser) { // < overloader
 ostream& operator << (ostream& os, const Data FBuser) {
 
 // print out the contents
+// print method for all message
 os << "User's age: " << FBuser.age;
-os << ", gender: " << FBuser.gender;
-os << ", number of his/her Friends on FB: " << FBuser.friendsCount;
-os << ", number of likes he/she received: " << FBuser.likesReceivedCount;
-
+os << "\t\t,\t\t gender: " << FBuser.gender;
+os << "\t\t,\t\t num of FRIENDS: " << FBuser.friendsCount;
+os << "\t\t,\t\t num of LIKES ❤: " << FBuser.likesReceivedCount;
+    return os;
 }

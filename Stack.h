@@ -26,7 +26,7 @@ public:
 
     // a member public function named “pop_head” removes a Data object pointed to by the head pointer;
     // returns a boolean with value true if the list is not empty, false if the list is empty.
-    bool pop_head(Data &obj);
+    bool pop_head();
 };
 
 

@@ -5,23 +5,26 @@
 #include "Stack.h"
 
 // inherits from LinkedList class that is given to you.
+// default constructor
 Stack::Stack() {
+
+    // default constructor
     head = nullptr;
 }
 
 // a member public function named “push_head” takes in a Data object,
 // creates a Node pointer, and inserts it into the Stack at the head of the list,
-void Stack::push_head(Data &stat){
+void Stack::push_head(Data& FBUser){
 
     // push in the head
-    Node* node = new Node(stat);
-    node->next = head;
+    Node* node = new Node(FBUser);
+    node -> next = head;
     head = node;
 }
 
 // a member public function named “pop_head” removes a Data object pointed to by the head pointer;
 // returns a boolean with value true if the list is not empty, false if the list is empty.
-bool Stack::pop_head(Data &da) {
+bool Stack::pop_head() {
 
     // delete in the head
     Node* deletion = head;
@@ -34,7 +37,7 @@ bool Stack::pop_head(Data &da) {
     // case2: not empty, boring*1000000
     else{
         head = head->next;
-        //ostream
+        // ostream
         delete (deletion);
         return true;
     }
